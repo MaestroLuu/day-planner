@@ -17,26 +17,13 @@ $(".time-block").each(function() {
     } else {
         $(this).addClass("future");
     }
-
-    if (localStorage.getItem(newValue)) {
-        $(this).class("description").text(localStorage.getItem(newValue));
-    }
     
-
-    // if (newValue == localStorage.key(newValue)) {
-    //     $(this).children.eq(1).text(localStorage.getItem(newValue));
-    // }
-
-
-    // if newValue = key from localStorage
-    // pull value and add the text to corresponding id
-
-    // if (localStorage.key == newValue) {
-    //     // $(this).text(localStorage.getItem(newValue));
-        
-    // }
+    if ($(this).attr("id") == newValue) {
+        var textValue = localStorage.getItem($(this).attr("id"));
+        $(this).children().eq(1).text(textValue);
+        console.log(textValue);
+    } 
 });
-
 
 saveBtn.on("click", function(event) {
     var hour = $(this).parent().attr("id");
@@ -48,8 +35,3 @@ function displayDate() {
     var date = time.format("dddd, MMMM Do");
     dateDisplay.text(date);
 }
-
-
-
-
-
