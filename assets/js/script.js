@@ -5,6 +5,7 @@ var currentTime = time.format("k");
 
 displayDate();
 
+// runs through each div with ".time-block" and reassigns id to numeric value
 $(".time-block").each(function() {
     var hour = $(this).attr("id").split("-");
     var newId = $(this).attr("id", hour[1]);
@@ -18,11 +19,9 @@ $(".time-block").each(function() {
         $(this).addClass("future");
     }
     
-    if ($(this).attr("id") == newValue) {
-        var textValue = localStorage.getItem($(this).attr("id"));
-        $(this).children().eq(1).text(textValue);
-        console.log(textValue);
-    } 
+    // retrieves text from prior entry and displays them on web application
+    var textValue = localStorage.getItem($(this).attr("id"));
+    $(this).children().eq(1).text(textValue);
 });
 
 saveBtn.on("click", function(event) {
